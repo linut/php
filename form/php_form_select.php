@@ -11,7 +11,8 @@ switch($q){
     case 'TAOBAO':
         echo "www.taobao.com";
         break;
-}
+    default:
+
 ?>
 
 <form action="" method="GET">
@@ -23,6 +24,12 @@ switch($q){
     </select>
     <input type="submit" value="提交">
 </form>
+
+<?php
+		break;
+	}//在这里结束，是因为想让页面跳转显示时候不会再有HTML页面，只显示结果
+?>
+
 
 <?php
 $str = 'I love "PHP".';
