@@ -14,7 +14,7 @@ try{
     echo $e->getMessage();//打印异常信息
 }
 
-$sql = "CREATE DATABASE myDB3";
+$sql = "CREATE DATABASE myDB";
 
 if($conn->query($sql) === true){
     echo "数据库创建成功！<br>";
