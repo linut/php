@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>showHint</title>
+</head>
+<script>
+
+function showHint(str) {
+    //如果value为空，那么不做任何显示
+    if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML="";
+        return;
+    }
+
+    //根据不同浏览器生成不同的request对象
+    if(window.XMLHttpRequest){
+        //IE7+,Firefox,chrome,opera,safari浏览器执行的代码
+        xmlhttp=new XMLHttpRequest();
+    }else {
+        //IE6、IE5浏览器执行的代码
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange=function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        }
+    }
+
+    xmlhttp.open("get","gethint.php?q="+str,true);
+    xmlhttp.send();
+}
+</script>
+<body>
+<p><b>在输入框中输入一个姓名：</b></p>
+<form action="">
+    <lable>姓名：</lable><input type="text" name="" id="" onkeyup="showHint(this.value)">
+</form>
+<p>返回值：<span id="txtHint"></span></p>
+</body>
+</html>
