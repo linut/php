@@ -1,3 +1,4 @@
+
 <?php
 //连接MySQL,并创建数据库
 try{
@@ -7,9 +8,9 @@ try{
     $servername = $config['host'];
     $username = $config['username'];
     $password = $config['password'];
-    $dbname = "myDB";
+    $dbname = "mydb";
     //创建连接
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
+    $conn = new PDO("mysql:host=$servername;port=3316;dbname=$dbname",$username,$password);
     //将PDO错误模式设为异常
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
@@ -31,7 +32,9 @@ try{
     echo "数据表MyGuests创建成功"; 
 
 }catch(PDOException $e){
-    echo $sql ."<br>" .$e->getMessage();
+    echo "<br>" .$e->getMessage();
+    //windows下会出现乱码
+    echo iconv('gbk', 'utf-8', $e->getMessage());
 }
 $conn = null;
 ?>
