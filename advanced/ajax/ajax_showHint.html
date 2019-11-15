@@ -5,7 +5,10 @@
     <title>showHint</title>
 </head>
 <script>
-
+/**
+ * 描述：前台输入姓名，下面异步显示相关提示姓名
+ *
+ * */
 function showHint(str) {
     //如果value为空，那么不做任何显示
     if (str.length == 0) {
@@ -26,7 +29,7 @@ function showHint(str) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
         }
-    }
+    };
 
     xmlhttp.open("get","gethint.php?q="+str,true);
     xmlhttp.send();
