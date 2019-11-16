@@ -63,8 +63,6 @@ try{
     foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
         echo $v;
     }
-
-
 }catch (PDOException $e){
     echo  iconv('GBK','UTF-8',$e->getMessage());
 }
